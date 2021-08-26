@@ -274,7 +274,7 @@ export default class Oauth2Scheme extends BaseScheme<typeof DEFAULTS> {
     })
     const strategy = this.$auth.$storage.getCookies()['auth.strategy']
     if (strategy === 'google') {
-      const googlAccessToken = getResponseProp(response, 'g_access_token')
+      const googlAccessToken = response.data.g_access_token
       this.$auth.$storage.setCookie('g_access_token', googlAccessToken)
     }
     this._updateTokens(response)
