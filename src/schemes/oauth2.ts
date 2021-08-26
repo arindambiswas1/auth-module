@@ -89,6 +89,7 @@ export default class Oauth2Scheme extends BaseScheme<typeof DEFAULTS> {
   _updateTokens (response) {
     const token = getResponseProp(response, this.options.token.property)
     const refreshToken = getResponseProp(response, this.options.refreshToken.property)
+   
 
     this.token.set(token)
 
@@ -274,6 +275,11 @@ export default class Oauth2Scheme extends BaseScheme<typeof DEFAULTS> {
       this.$auth.callOnError(error, { method: 'refreshToken' })
       return Promise.reject(error)
     })
+    const strategy = this.$auth.$storage.getCookies()['auth.strategy']
+    if(strategy == 'google'){
+      const g_accessToken = getResponseProp(response, 'g_access_token')
+      this.$auth.$storage.setCookie('g_access_token', g_accessToken)
+    }
     this._updateTokens(response)
     return response
   }
