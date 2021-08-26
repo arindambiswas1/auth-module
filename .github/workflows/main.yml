@@ -3,10 +3,10 @@ name: ci
 on:
   push:
     branches:
-      - session_exp_issue
+      - bug_google_profile
   pull_request:
     branches:
-      - session_exp_issue
+      - bug_google_profile
 
 jobs:
   test:
@@ -59,7 +59,7 @@ jobs:
 
       - name: Publish Next
         run: |
-          if [ "$GIT_REF" = "refs/heads/session_exp_issue" ] ; then
+          if [ "$GIT_REF" = "refs/heads/bug_google_profile" ] ; then
             node ./scripts/bump-next
             yarn clean
             yarn build
