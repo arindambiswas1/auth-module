@@ -70,6 +70,6 @@
     "rimraf": "^3.0.2",
     "standard-version": "latest",
     "ts-jest": "latest",
-    "typescript": "4.2.0"
+    "typescript": "4.1.5"
   }
 }
