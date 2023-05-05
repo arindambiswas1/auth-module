@@ -354,7 +354,7 @@ export default class Auth {
     }
 
     if (process.client) {
-      if (noRouter) {
+      if (noRouter || this.ctx.$auth.$state.strategy === 'local') {
         window.location.replace(to)
       } else {
         this.ctx.redirect(to, this.ctx.query)
