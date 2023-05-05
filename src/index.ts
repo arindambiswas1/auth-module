@@ -56,7 +56,7 @@ declare module 'vue/types/vue' {
 }
 
 declare module 'vue/types/options' {
-  interface ComponentOptions<V extends Vue> {
+  interface ComponentOptions<V> {
     auth?: true | false | 'guest';
   }
 }
