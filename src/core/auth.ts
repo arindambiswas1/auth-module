@@ -1,4 +1,4 @@
-import { routeOption, isRelativeURL, isSet, isSameURL, getProp } from '../utils'
+import { routeOption, isRelativeURL, isSet, isSameURL, getProp, normalizePath } from '../utils'
 import type { AuthOptions, HTTPRequest, HTTPResponse } from '../'
 import Storage from './storage'
 
@@ -355,6 +355,10 @@ export default class Auth {
 
     if (process.client) {
       if (noRouter || this.ctx.$auth.$state.strategy === 'local') {
+        if (isRelativeURL(to) && !to.includes(this.ctx.base)) {
+          const basePathString = normalizePath(this.ctx.base)
+          to = normalizePath(basePathString + to) // Don't pass in context to preserve base url
+        }
         window.location.replace(to)
       } else {
         this.ctx.redirect(to, this.ctx.query)
