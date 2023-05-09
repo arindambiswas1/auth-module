@@ -203,6 +203,7 @@ export default class Oauth2Scheme extends BaseScheme<typeof DEFAULTS> {
 
   logout () {
     let opts = {}
+    this.$auth.reset()
     if (this.options.endpoints.logout) {
       if (this.name === 'bitpod') {
         opts = {
@@ -218,7 +219,6 @@ export default class Oauth2Scheme extends BaseScheme<typeof DEFAULTS> {
       const url = this.options.endpoints.logout + '?' + encodeQuery(opts)
       window.location.replace(url)
     }
-    return this.$auth.reset()
   }
 
   async fetchUser () {
