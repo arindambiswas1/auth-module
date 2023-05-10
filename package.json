@@ -1,8 +1,8 @@
 {
-  "name": "@bitpod/auth-next",
+  "name": "@arindambiswas1/nuxt-auth-custom",
   "version": "4.11.1",
   "description": "Authentication module for Nuxt.js - Forked for Bitpod",
-  "repository": "bitpodio/auth-module",
+  "repository": "arindambiswas1/auth-module",
   "license": "MIT",
   "main": "./dist/module/index.js",
   "types": "./dist/index.d.ts",
