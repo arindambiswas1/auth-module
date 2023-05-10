@@ -3,10 +3,10 @@ name: ci
 on:
   push:
     branches:
-      - bug_google_profile
+      - oauth_agent
   pull_request:
     branches:
-      - bug_google_profile
+      - oauth_agent
 
 jobs:
   test:
@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node: [10]
+        node: [16]
       fail-fast: true
 
     steps:
@@ -59,7 +59,7 @@ jobs:
 
       - name: Publish Next
         run: |
-          if [ "$GIT_REF" = "refs/heads/bug_google_profile" ] ; then
+          if [ "$GIT_REF" = "refs/heads/oauth_agent" ] ; then
             node ./scripts/bump-next
             yarn clean
             yarn build
